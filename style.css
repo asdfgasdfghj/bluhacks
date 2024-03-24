@@ -6,9 +6,9 @@
 }
 
 body {
-    background-color: var(--background-color);
-    color: var(--foreground-color);
-    font-family: "Afacad";
+    background-color: var(--background-color) !important;
+    color: var(--foreground-color) !important;
+    font-family: "Afacad" !important;
     font-size: 18px;
     padding: 10px;
     transition: 400ms;
@@ -39,7 +39,7 @@ a:hover {
     margin-left: 0;
 }
 
-.header, .header2 {
+.header, .header2, .header3 {
     font-size: 75px;
     font-weight: bold;
     letter-spacing: 7px;
@@ -48,6 +48,9 @@ a:hover {
 }
 .header2 {
     font-size: 40px;
+}
+.header3 {
+    font-size: 25px;
 }
 .highlighted {
     background: var(--foreground-color);
