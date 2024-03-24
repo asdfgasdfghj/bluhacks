@@ -8,20 +8,21 @@
     <link rel="stylesheet" href="style.css">
     <style>
         body {
-            margin: 0px;
+            margin: 0px !important;
+            padding: 0px !important;
         }
     </style>
     <!-- <script src="main.js"></script> -->
     <script type="importmap">
         {
             "imports": {
-                "three": "https://unpkg.com/three@<version>/build/three.module.js",
-                "three/addons/": "https://unpkg.com/three@<version>/examples/jsm/"
+                "three": "https://unpkg.com/three@v0.159.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@v0.159.0"/examples/jsm/"
             }
         }
     </script>
+    <script type="module" src="main.js"></script>
 </head>
 <body onerror="alert(event)">
-    <script type="module" src="main.js"></script>
 </body>
 </html>
