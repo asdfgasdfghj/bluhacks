@@ -1,8 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 :root {
-    --background-color: #111;
+    --background-color: #222;
     --foreground-color: #fff;
+}
+
+@keyframes open {
+    from {
+        filter: opacity(0%);
+        transform: scaleX(0%) translateX(-100%);
+    }
+    to {
+        filter: opacity(100%);
+        transform: scaleX(100%) translateX(0px);
+    }
 }
 
 body {
@@ -15,6 +26,11 @@ body {
     line-height: 2em !important;
     scroll-behavior: smooth !important;
     padding: 70px;
+
+    animation-name: open;
+    animation-duration: 0.5s;
+
+    cursor: url("pointer.png"), auto;
 }
 h1, h2, h3, h4, h5, h6 {
     letter-spacing: 4px;
@@ -29,6 +45,7 @@ a, button {
     font-weight: bold;
     text-decoration: none !important;
     transition: 180ms;
+    cursor: url("cursor.png"), auto;
 }
 a:hover {
     letter-spacing: 5px;
@@ -101,7 +118,7 @@ a:hover {
 
 
 canvas {
-    background: red;
+    background: transparent;
     width: 400px !important;
     height: 400px !important;
 }

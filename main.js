@@ -22,6 +22,7 @@ const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerWidth);
 renderer.antialias = true;
 renderer.outputEncoding = THREE.sRGBEncoding;
+renderer.setClearColor(0x000000, 0);
 document.getElementById("cont").appendChild(renderer.domElement);
 
 // const loader = new THREE.CubeTextureLoader();
