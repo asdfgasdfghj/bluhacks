@@ -84,9 +84,17 @@ function createDataBar(position, percentage, name, s = 2, height = 5) {
     bars[name] = fill;
 }
 
-createDataBar(new THREE.Vector3(0, 0, -5), .5, "1");
-createDataBar(new THREE.Vector3(-2.5, 0, -5), .53, "2");
-createDataBar(new THREE.Vector3(2.5, 0, -5), .29, "3");
+pages = {
+    "substanceabuse.html": substance,
+    "demographics.html": () => {}
+}
+
+function substance() {
+    createDataBar(new THREE.Vector3(0, 0, -5), .5, "1");
+    createDataBar(new THREE.Vector3(-2.5, 0, -5), .53, "2");
+    createDataBar(new THREE.Vector3(2.5, 0, -5), .29, "3");
+}
+substance();
 
 const clock = new THREE.Clock(true);
 let elapsed = 0;
