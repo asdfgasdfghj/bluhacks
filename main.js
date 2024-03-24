@@ -68,15 +68,15 @@ function onPointerMove(event) {
 	pointer.y = -((event.clientY - rect.top) / 400) * 2 + 1;
 }
 
-function createDataBar(position, percentage, name, height = 5) {
+function createDataBar(position, percentage, name, s = 2, height = 5) {
     // alert(JSON.stringify(position))
-    const background = new THREE.Mesh(new THREE.BoxGeometry(1.999, height, 1.999), barBackground);
+    const background = new THREE.Mesh(new THREE.BoxGeometry(s - 0.001, height, s - 0.001), barBackground);
     background.position.set(position.x, position.y + height / 2, position.z);
     // alert(JSON.stringify(background.position))
     background.name = name;
     scene.add(background);
 
-    const fill = new THREE.Mesh(new THREE.BoxGeometry(2, height * percentage, 2), barFill);
+    const fill = new THREE.Mesh(new THREE.BoxGeometry(s, height * percentage, s), barFill);
     fill.position.set(position.x, position.y + height * percentage / 2, position.z);
     fill.name = name;
     scene.add(fill);
@@ -84,9 +84,9 @@ function createDataBar(position, percentage, name, height = 5) {
     bars[name] = fill;
 }
 
-createDataBar(new THREE.Vector3(0, 0, -5), .5, "1")
-createDataBar(new THREE.Vector3(-2.5, 0, -5), .53, "2")
-createDataBar(new THREE.Vector3(2.5, 0, -5), .29, "3")
+createDataBar(new THREE.Vector3(0, 0, -5), .5, "1");
+createDataBar(new THREE.Vector3(-2.5, 0, -5), .53, "2");
+createDataBar(new THREE.Vector3(2.5, 0, -5), .29, "3");
 
 const clock = new THREE.Clock(true);
 let elapsed = 0;
