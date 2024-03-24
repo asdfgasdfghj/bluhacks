@@ -6,96 +6,22 @@
     <title>Jesse.</title>
 
     <link rel="stylesheet" href="style.css">
-    <script src="main.js"></script>
+    <style>
+        body {
+            margin: 0px;
+        }
+    </style>
+    <!-- <script src="main.js"></script> -->
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@<version>/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@<version>/examples/jsm/"
+            }
+        }
+    </script>
 </head>
-<body>
-    <div id="name-and-shit">
-        <span class="highlighted header">JESSE</span><br><br>
-        <hr class="short-hr">
-        <p>Art and Computer Science student.</p>
-        <br>
-        <ul>
-            <li><a href="#projects">PROJECTS</a></li>
-            <li><a href="#about">ABOUT</a></li>
-        </ul>
-        <br>
-        <button class="theme-btn" 
-            style="background: #111;"
-            onclick="changeTheme('#111', '#fff')"></button>
-        <button class="theme-btn" 
-            style="background: #212342;"
-            onclick="changeTheme('#212342', '#ffcf33')"></button>
-        <button class="theme-btn" 
-            style="background: #d13870;"
-            onclick="changeTheme('#d13870', '#fff')"></button>
-        <button class="theme-btn" 
-            style="background: #253d3c;"
-            onclick="changeTheme('#253d3c', '#ffb8d2')"></button>
-    </div>
-    <div id="content">
-        <span id="projects" class="highlighted header2">PROJECTS</span><br><br>
-
-        <div class="project">
-            <div class="tint"><img src="infact.png"></div>
-            <hr class="short-hr">
-            <span>Media bias has been a huge issue, and InFact aims to minimize it with corroborated news articles from both sides of the political spectrum. In development.</span>
-
-            <!-- <br><a href="https://jambox.onrender.com">VISIT</a> -->
-        </div>
-        <div class="project">
-            <div class="tint"><img src="jambox.png"></div>
-            <hr class="short-hr">
-            <span>Listen to radios from around the world! Currently in beta (development halted).</span>
-
-            <br><a href="https://jambox.onrender.com">VISIT</a>
-        </div>
-        <div class="project">
-            <div class="tint"><img src="procedural.png"></div>
-            <hr class="short-hr">
-            <span>Small experiment regarding procedural terrain generation, made in three.js.</span>
-
-            <br><a href="https://jessewithoutani.github.io/procedural-generation-test/">PLAY</a>
-        </div>
-        <div class="project">
-            <div class="tint"><img src="bailm.png"></div>
-            <hr class="short-hr">
-            <span>An AI Language Model trained from random conversations. Viewer discretion is advised.</span>
-
-            <br><a href="https://bailm.onrender.com">VISIT</a>
-        </div>
-        <div class="project">
-            <div class="tint"><img src="pbgs.png"></div>
-            <hr class="short-hr">
-            <span>A short game about beating up bad guys. Originally developed for the Leland Hacks hackathon, won best design award</span>
-
-            <br><a href="https://blueberrytech123.github.io/pbgs">PLAY</a>
-        </div>
-
-        <div class="project">
-            <h2>Misc. Projects</h2>
-            <hr class="short-hr">
-            <ul>
-                <li><a href="https://timewinder.github.io">Timewinder Website</a></li>
-            </ul>
-        </div>
-
-        <br><br>
-        <span id="about" class="highlighted header2">ABOUT</span><br><br>
-        <ul>
-            <li>Education: Gunn High School</li>
-            <li>Github: <a href="https://github.com/BlueberryTech123">blueberrytech123</a></li>
-            <li>E-mail: <a href="mailto:blueberry21007@gmail.com">blueberry21007@gmail.com</a></li>
-            <li>Co-President of <a href="https://timewinder.github.io">Timewinder</a>, a game development club</li>
-            <li>
-                Interests:
-                <ul>
-                    <li>Web development & design</li>
-                    <li>Game development (Unity and three.js specifically)</li>
-                    <li>Traditional Art</li>
-                </ul>
-            </li>
-            <li>Visit <a href="/V1">V1</a></li>
-        </ul>
-    </div>
+<body onerror="alert(event)">
+    <script type="module" src="main.js"></script>
 </body>
 </html>
