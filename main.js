@@ -1,4 +1,5 @@
 import * as THREE from "https://unpkg.com/three@v0.159.0/build/three.module.js";
+import { OrbitControls } from 'https://unpkg.com/three@v0.159.0/examples/jsm/controls/OrbitControls.js';
 
 // function changeTheme(background, foreground) {
 //     let root = document.querySelector(":root");
@@ -15,24 +16,26 @@ renderer.antialias = true;
 renderer.outputEncoding = THREE.sRGBEncoding;
 document.getElementById("cont").appendChild(renderer.domElement);
 
-const loader = new THREE.CubeTextureLoader();
-loader.setPath("textures/");
+const controls = new OrbitControls(camera, renderer.domElement);
+
+// const loader = new THREE.CubeTextureLoader();
+// loader.setPath("textures/");
 
 
-const textureCube = loader.load([
-    "sky_rt0001.png", "sky_lf0001.png",
-    "sky_up0001.png", "sky_dn0001.png",
-    "sky_bk0001.png", "sky_ft0001.png"
-]);
+// const textureCube = loader.load([
+//     "sky_rt0001.png", "sky_lf0001.png",
+//     "sky_up0001.png", "sky_dn0001.png",
+//     "sky_bk0001.png", "sky_ft0001.png"
+// ]);
 
 scene.background = textureCube;
 scene.add(camera);
 camera.position.set(0, 2, 0);
 
-const groundGeometry = new THREE.PlaneGeometry(250, 250);
-const groundMaterial = new THREE.MeshPhongMaterial({ side: THREE.BackSide });
-const ground = new THREE.Mesh(groundGeometry, groundMaterial);
-ground.rotation.set(Math.PI/2, 0, Math.PI);
+// const groundGeometry = new THREE.PlaneGeometry(250, 250);
+// const groundMaterial = new THREE.MeshPhongMaterial({ side: THREE.BackSide });
+// const ground = new THREE.Mesh(groundGeometry, groundMaterial);
+// ground.rotation.set(Math.PI/2, 0, Math.PI);
 
 scene.background.minFilter = scene.background.magFilter = THREE.NearestFilter;
 const ambient = new THREE.AmbientLight(0xe0f6ff);
@@ -42,6 +45,24 @@ scene.add(ambient);
 scene.add(directional);
 
 scene.add(ground);
+
+const barFill = new THREE.MeshPhongMaterial({ color: 0xffffff })
+const barBackground = new THREE.MeshBasicMaterial({ color: 0x333333, transparent: true, transparency: 0.5 })
+
+function createDataBar(position, percentage, height = 5) {
+    const background = THREE.Mesh(THREE.BoxGeometry(0.99, height, 0.99), barBackground);
+    background.position = position;
+    background.position.add(0, height / 2, 0);
+    alert(JSON.stringify(background.position))
+    scene.add(background);
+
+    const fill = THREE.Mesh(THREE.BoxGeometry(1, height * percentage, 1), barFill);
+    fill.position = position;
+    fill.position.add(0, height * percentage / 2, 0);
+    scene.add(fill);
+}
+
+createDataBar(THREE.Vector3(0, 0, 5), .5)
 
 function animate() {
 	requestAnimationFrame(animate);
@@ -55,4 +76,5 @@ animate();
 
 function update() {
     // Runs every frame
+    //
 }
