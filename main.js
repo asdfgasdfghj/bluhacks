@@ -84,17 +84,21 @@ function createDataBar(position, percentage, name, s = 2, height = 5) {
     bars[name] = fill;
 }
 
-pages = {
-    "substanceabuse.html": substance,
-    "demographics.html": () => {}
-}
-
 function substance() {
     createDataBar(new THREE.Vector3(0, 0, -5), .5, "1");
     createDataBar(new THREE.Vector3(-2.5, 0, -5), .53, "2");
     createDataBar(new THREE.Vector3(2.5, 0, -5), .29, "3");
 }
-substance();
+
+
+const pages = {
+    "/substanceabuse.html": substance,
+    "/demographics.html": () => {}
+}
+// pages
+// substance();
+// alert(window.location.pathname)
+pages[window.location.pathname]()
 
 const clock = new THREE.Clock(true);
 let elapsed = 0;
