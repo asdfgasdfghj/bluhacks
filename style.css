@@ -125,6 +125,7 @@ a:hover {
 
 
 canvas {
+    /* background: red; */
     background: transparent;
     width: 400px !important;
     height: 400px !important;

@@ -6,7 +6,7 @@ import * as THREE from "https://unpkg.com/three@0.159.0/build/three.module.js";
 //     root.style.setProperty("--foreground-color", foreground);
 // }
 
-const data = {
+let data = {
     "default": "Hover over graph for more information...",
     "1": "<span class='highlighted'>&nbsp;50% </span>&nbsp;&nbsp;with mental disorder suffer alcohol or drug abuse",
     "2": "<span class='highlighted'>&nbsp;53% </span>&nbsp;&nbsp;of drug abusers have mental illness",
@@ -38,7 +38,7 @@ document.getElementById("cont").appendChild(renderer.domElement);
 // scene.background = textureCube;
 scene.add(camera);
 camera.position.set(0, 6, 5);
-camera.rotation.set(-3.14/8, 0, 0)
+camera.rotation.set(-.15, 0, 0)
 
 // const groundGeometry = new THREE.PlaneGeometry(250, 250);
 // const groundMaterial = new THREE.MeshPhongMaterial({ side: THREE.BackSide });
@@ -48,8 +48,13 @@ camera.rotation.set(-3.14/8, 0, 0)
 const ambient = new THREE.AmbientLight(0xe0f6ff);
 const directional = new THREE.DirectionalLight(0xd6cec5, 3.5);
 directional.castShadow = true;
+const target = new THREE.Object3D();
+target.position.set(-.5, 0, -.8);
+scene.add(target);
 scene.add(ambient);
 scene.add(directional);
+
+directional.target = target
 
 // scene.add(ground);
 
@@ -85,15 +90,26 @@ function createDataBar(position, percentage, name, s = 2, height = 5) {
 }
 
 function substance() {
-    createDataBar(new THREE.Vector3(0, 0, -5), .5, "1");
-    createDataBar(new THREE.Vector3(-2.5, 0, -5), .53, "2");
-    createDataBar(new THREE.Vector3(2.5, 0, -5), .29, "3");
+    createDataBar(new THREE.Vector3(0, 2, -5), .5, "1");
+    createDataBar(new THREE.Vector3(-2.5, 2, -5), .53, "2");
+    createDataBar(new THREE.Vector3(2.5, 2, -5), .29, "3");
+}
+function suicide() {
+    const max = 20;
+    data = [10.9, 10.8, 11, 10.9, 11, 11.3, 11.6, 11.8, 12.1, 12.3, 12.6, 12.6, 13, 13.3, 13.5, 14, 14.2, 13.9, 13.5, 14.1, 14.3]
+
+    for (let i = 0; i < data.length; i++) {
+        const position = (-data.length/2 * .75) + i * .75;
+        createDataBar(new THREE.Vector3(position+.5, .75, -15), data[i] / max, `s${i}`, .55, 9);
+        data[`s${i}`] = `In ${2002 + i}, the U. S. suicide rate was <span class="highlighted">&nbsp;${data[i]}&nbsp;</span>`
+    }
 }
 
 
 const pages = {
     "/substanceabuse.html": substance,
-    "/demographics.html": () => {}
+    "/demographics.html": () => {},
+    "/suicide.html": suicide
 }
 // pages
 // substance();
@@ -132,6 +148,6 @@ function update(delta) {
         bars[key].material = barFillHover;
     }
     else {
-        info.innerHTML = data.default;
+        info.innerHTML = "Hover over graph for more information...";
     }
 }
