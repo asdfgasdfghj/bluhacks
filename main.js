@@ -5,12 +5,20 @@ import * as THREE from "https://unpkg.com/three@0.159.0/build/three.module.js";
 //     root.style.setProperty("--background-color", background);
 //     root.style.setProperty("--foreground-color", foreground);
 // }
+const hehehe = "adults recieved counseling or a mental health diagnosis";
 
 let data = {
     "default": "Hover over graph for more information...",
     "1": "<span class='highlighted'>&nbsp;50% </span>&nbsp;&nbsp;with mental disorder suffer alcohol or drug abuse",
     "2": "<span class='highlighted'>&nbsp;53% </span>&nbsp;&nbsp;of drug abusers have mental illness",
-    "3": "<span class='highlighted'>&nbsp;29% </span>&nbsp;&nbsp;of people diagnosed as mentally ill abuse alcohol or drugs"
+    "3": "<span class='highlighted'>&nbsp;29% </span>&nbsp;&nbsp;of people diagnosed as mentally ill abuse alcohol or drugs",
+
+    "d1": "<span class='highlighted'>&nbsp;25% </span>&nbsp;&nbsp;of Asian " + hehehe,
+    "d2": "<span class='highlighted'>&nbsp;36% </span>&nbsp;&nbsp;of Hispanic/Latino " + hehehe,
+    "d3": "<span class='highlighted'>&nbsp;38% </span>&nbsp;&nbsp;of Black " + hehehe,
+    "d4": "<span class='highlighted'>&nbsp;52% </span>&nbsp;&nbsp;of White " + hehehe,
+    "d5": "<span class='highlighted'>&nbsp;52% </span>&nbsp;&nbsp;of Mixed " + hehehe,
+    "d6": "<span class='highlighted'>&nbsp;56% </span>&nbsp;&nbsp;of LGBTQ+ " + hehehe,
 }
 
 let bars = {}
@@ -95,7 +103,11 @@ function substance() {
     createDataBar(new THREE.Vector3(2.5, 2, -5), .29, "3");
 }
 function demographics() {
-    //
+    const stuff = [.25, .36, .38, .52, .52, .56]
+    for (let i = 0; i < stuff.length; i++) {
+        const position = (-stuff.length/2 * 1.5) + i * 1.5;
+        createDataBar(new THREE.Vector3(position+.75, .75, -7), stuff[i], `d${i+1}`, 1.2, 7);
+    }
 }
 function suicide() {
     const max = 20;
@@ -153,4 +165,5 @@ function update(delta) {
     else {
         info.innerHTML = "Hover over graph for more information...";
     }
+
 }
