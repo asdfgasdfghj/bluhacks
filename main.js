@@ -94,21 +94,24 @@ function substance() {
     createDataBar(new THREE.Vector3(-2.5, 2, -5), .53, "2");
     createDataBar(new THREE.Vector3(2.5, 2, -5), .29, "3");
 }
+function demographics() {
+    //
+}
 function suicide() {
     const max = 20;
     data = [10.9, 10.8, 11, 10.9, 11, 11.3, 11.6, 11.8, 12.1, 12.3, 12.6, 12.6, 13, 13.3, 13.5, 14, 14.2, 13.9, 13.5, 14.1, 14.3]
 
     for (let i = 0; i < data.length; i++) {
         const position = (-data.length/2 * .75) + i * .75;
-        createDataBar(new THREE.Vector3(position+.5, .75, -15), data[i] / max, `s${i}`, .55, 9);
-        data[`s${i}`] = `In ${2002 + i}, the U. S. suicide rate was <span class="highlighted">&nbsp;${data[i]}&nbsp;</span>`
+        createDataBar(new THREE.Vector3(position+.5, .75, -15), data[i] / max, `s${i}`, .55, 7);
+        data[`s${i}`] = `In ${2002 + i}, the U. S. suicide rate was <span class="highlighted">&nbsp;${data[i]}&nbsp;</span> per 100,000`;
     }
 }
 
 
 const pages = {
     "/substanceabuse.html": substance,
-    "/demographics.html": () => {},
+    "/demographics.html": demographics,
     "/suicide.html": suicide
 }
 // pages
