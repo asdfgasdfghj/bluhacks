@@ -148,7 +148,7 @@ function update(delta) {
     raycaster.setFromCamera(pointer, camera);
     elapsed += delta;
     // Runs every frame
-    camera.position.set(0, 6 + Math.sin(elapsed) * 0.15, 5);
+    camera.position.set(0, 6 + Math.sin(elapsed) * 0.15, 5.5);
 
     const intersects = raycaster.intersectObjects(scene.children);
     const info = document.querySelector("#info");

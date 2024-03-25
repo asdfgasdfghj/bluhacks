@@ -118,7 +118,14 @@ a:hover {
 }
 
 
-
+input {
+    outline: 0;
+    border: none;
+    background: #444;
+    color: #fff;
+    margin-bottom: 5px !important;
+    padding-left: 30px;
+}
 
 
 
